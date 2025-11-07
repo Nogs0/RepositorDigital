@@ -15,7 +15,8 @@ export interface GondolaDto {
     name: string,
     minWeight: number,
     idealWeight: number,
-    maxWeight: number 
+    maxWeight: number ,
+    weight: number
 }
 
 export interface CreateGondolaDto {

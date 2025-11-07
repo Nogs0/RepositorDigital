@@ -93,6 +93,7 @@ function createNewRecord(): GondolaDto {
     minWeight: 0,
     idealWeight: 0,
     maxWeight: 0,
+    weight: 0
   };
 }
 
