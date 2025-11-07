@@ -10,13 +10,10 @@
         <v-divider></v-divider>
         <v-container>
             <v-row>
-                <v-col cols="12" md="8" lg="10" class="py-0 pt-2">
+                <v-col cols="12"class="py-0 pt-2">
                     <v-text-field placeholder="Digite sua busca" variant="outlined"
                         :hint="`Pesquise por ${searchFields}`" density="compact" prepend-inner-icon="mdi-magnify"
                         v-model="search"></v-text-field>
-                </v-col>
-                <v-col cols="12" md="4" lg="2">
-                    <v-btn color="green" block prepend-icon="mdi-plus" text="Adicionar" @click="emit('add')"></v-btn>
                 </v-col>
             </v-row>
         </v-container>
@@ -31,7 +28,6 @@ interface HeaderTableProps {
 }
 
 interface Emits {
-    (e: "add"): void;
     (e: "search", newValue: string): void;
 }
 

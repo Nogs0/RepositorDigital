@@ -20,9 +20,9 @@ const router = createRouter({
           component: () => import("@/pages/Dashboard.vue")
         },
         {
-          path: '/gondolas',
-          name: 'gondolas',
-          component: () => import("@/pages/Gondolas.vue")
+          path: '/produtos',
+          name: 'produtos',
+          component: () => import("@/pages/Produtos.vue")
         }
       ]
     }

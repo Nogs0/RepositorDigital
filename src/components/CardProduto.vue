@@ -3,7 +3,7 @@
         <v-card-title>
             <v-row>
                 <v-col cols="12" sm="12" md="8" lg="8">
-                    <h1 class="text-h5">{{ gondola.name }}</h1>
+                    <h1 class="text-h5">{{ produto.name }}</h1>
                 </v-col>
                 <v-col cols="12" sm="12" md="4" lg="4">
                     <div class="badge-status" :class="badgeClass">
@@ -22,13 +22,13 @@
                 </v-col>
                 <v-col cols="4" class="text-end">
                     <span class="text-h6">
-                        {{ gondola.weight }}/{{ gondola.maxWeight }}
+                        {{ produto.weight }}/{{ produto.maxWeight }}
                     </span>
                 </v-col>
             </v-row>
-            <v-progress-linear class="my-2" :model-value="(gondola.weight * 100) / gondola.maxWeight" :height="15"
+            <v-progress-linear class="my-2" :model-value="(produto.weight * 100) / produto.maxWeight" :height="15"
                 rounded :color="stockColor"></v-progress-linear>
-            <div class="mt-2">Mín: {{ gondola.minWeight }} | Máx: {{ gondola.maxWeight }}</div>
+            <div class="mt-2">Mín: {{ produto.minWeight }} | Máx: {{ produto.maxWeight }}</div>
             <div class="d-flex mt-2">
                 <span>Última atualização:</span>
                 <v-spacer></v-spacer>
@@ -39,35 +39,35 @@
 </template>
 
 <script setup lang="ts">
-import type { GondolaDto } from '@/types/gondola';
+import type { ProdutoDto } from '@/types/produto';
 
-interface CardGondolaProps {
-    gondola: GondolaDto
+interface CardProdutoProps {
+    produto: ProdutoDto
 }
-const props = defineProps<CardGondolaProps>();
+const props = defineProps<CardProdutoProps>();
 
 const cardClass = computed(() => {
-    const g = props.gondola;
+    const g = props.produto;
 
-    if (g.weight < g.minWeight) return 'gondola-critical';
-    if (g.weight < g.idealWeight) return 'gondola-low';
-    if (g.weight < g.maxWeight) return 'gondola-healthy';
+    if (g.weight < g.minWeight) return 'produto-critical';
+    if (g.weight < g.idealWeight) return 'produto-low';
+    if (g.weight < g.maxWeight) return 'produto-healthy';
 
-    return 'gondola-healthy';
+    return 'produto-healthy';
 });
 
 const badgeClass = computed(() => {
-    const g = props.gondola;
+    const g = props.produto;
 
-    if (g.weight < g.minWeight) return 'badge-gondola-critical';
-    if (g.weight < g.idealWeight) return 'badge-gondola-low';
-    if (g.weight < g.maxWeight) return 'badge-gondola-healthy';
+    if (g.weight < g.minWeight) return 'badge-produto-critical';
+    if (g.weight < g.idealWeight) return 'badge-produto-low';
+    if (g.weight < g.maxWeight) return 'badge-produto-healthy';
 
-    return 'badge-gondola-healthy';
+    return 'badge-produto-healthy';
 });
 
 const badgeText = computed(() => {
-    const g = props.gondola;
+    const g = props.produto;
 
     if (g.weight < g.minWeight) return 'Crítico';
     if (g.weight < g.idealWeight) return 'Baixo';
@@ -77,7 +77,7 @@ const badgeText = computed(() => {
 });
 
 const stockColor = computed(() => {
-    const g = props.gondola;
+    const g = props.produto;
 
     if (g.weight < g.minWeight) return '#ff0000';
     if (g.weight < g.idealWeight) return '#ffa500';
@@ -99,27 +99,27 @@ const stockColor = computed(() => {
     justify-content: space-evenly;
 }
 
-.gondola-healthy {
+.produto-healthy {
     background-color: rgb(196, 255, 196)
 }
 
-.gondola-low {
+.produto-low {
     background-color: rgb(255, 232, 189)
 }
 
-.gondola-critical {
+.produto-critical {
     background-color: rgb(255, 212, 212)
 }
 
-.badge-gondola-healthy {
+.badge-produto-healthy {
     background-color: #415c41
 }
 
-.badge-gondola-low {
+.badge-produto-low {
     background-color: #ffa500
 }
 
-.badge-gondola-critical {
+.badge-produto-critical {
     background-color: #ff0000
 }
 </style>

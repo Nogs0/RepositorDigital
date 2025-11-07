@@ -1,7 +1,7 @@
 <template>
   <v-row>
     <v-col cols="12" sm="12" md="3" lg="3">
-      <CountCard name="Total de Gôndolas" icon="mdi-store" :count="10" icon-color="primary" />
+      <CountCard name="Total de Produtos" icon="mdi-store" :count="10" icon-color="primary" />
     </v-col>
     <v-col cols="12" sm="12" md="3" lg="3">
       <CountCard name="Estoque Crítico" icon="mdi-store-remove" :count="10" icon-color="red" />
@@ -36,19 +36,18 @@
     </v-col>
   </v-row>
   <v-row>
-    <v-col v-for="gondola in gondolas" :key="gondola.id" cols="12" sm="12" md="3" lg="3">
-      <CardGondola :key="gondola.id" :gondola="gondola" />
+    <v-col v-for="produto in produtos" :key="produto.id" cols="12" sm="12" md="3" lg="3">
+      <CardProduto :key="produto.id" :produto="produto" />
     </v-col>
   </v-row>
 </template>
 
 <script lang="ts" setup>
-import { useGondolaStore } from '@/stores/gondolas';
-import type { GondolaDto } from '@/types/gondola';
+import { useProdutoStore } from '@/stores/produtos';
+import type { ProdutoDto } from '@/types/produto';
 
-const gondolaStore = useGondolaStore();
-
-const gondolas = ref<GondolaDto[]>(
+const produtoStore = useProdutoStore();
+const produtos = ref<ProdutoDto[]>(
   [
     {
       id: 1,

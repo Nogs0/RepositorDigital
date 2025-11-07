@@ -12,7 +12,8 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     AppFooter: typeof import('./components/AppFooter.vue')['default']
-    CardGondola: typeof import('./components/CardGondola.vue')['default']
+    CardGondola: typeof import('./components/CardProduto.vue')['default']
+    CardProduto: typeof import('./components/CardProduto.vue')['default']
     CountCard: typeof import('./components/CountCard.vue')['default']
     HeaderTable: typeof import('./components/HeaderTable.vue')['default']
     HelloWorld: typeof import('./components/HelloWorld.vue')['default']

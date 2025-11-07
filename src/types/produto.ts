@@ -1,16 +1,16 @@
 import type { PagedInputDto } from "./shared"
 
-export interface GondolaState {
+export interface ProdutoState {
     isLoadingList: boolean,
-    items: GondolaDto[],
+    items: ProdutoDto[],
     totalCount: number,
     error: string | null,
     isLoadingItem: boolean,
-    gondola: GondolaDto | null,
+    produto: ProdutoDto | null,
     pagedInput: PagedInputDto | null
 }
 
-export interface GondolaDto {
+export interface ProdutoDto {
     id: number,
     name: string,
     minWeight: number,
@@ -19,7 +19,7 @@ export interface GondolaDto {
     weight: number
 }
 
-export interface CreateGondolaDto {
+export interface CreateProdutoDto {
     name: string,
     minWeight: number,
     idealWeight: number,

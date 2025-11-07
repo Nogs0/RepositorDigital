@@ -19,7 +19,7 @@ declare module 'vue-router/auto-routes' {
    */
   export interface RouteNamedMap {
     '/Dashboard': RouteRecordInfo<'/Dashboard', '/Dashboard', Record<never, never>, Record<never, never>>,
-    '/Gondolas': RouteRecordInfo<'/Gondolas', '/Gondolas', Record<never, never>, Record<never, never>>,
+    '/Produtos': RouteRecordInfo<'/Produtos', '/Produtos', Record<never, never>, Record<never, never>>,
   }
 
   /**
@@ -37,8 +37,8 @@ declare module 'vue-router/auto-routes' {
       routes: '/Dashboard'
       views: never
     }
-    'src/pages/Gondolas.vue': {
-      routes: '/Gondolas'
+    'src/pages/Produtos.vue': {
+      routes: '/Produtos'
       views: never
     }
   }
