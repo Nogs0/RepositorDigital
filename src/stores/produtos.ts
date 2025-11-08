@@ -1,42 +1,10 @@
 import type { ProdutoDto, ProdutoState } from "@/types/produto";
+import axios from "axios";
+import { ca } from "vuetify/locale";
 
 function getInitialState(): ProdutoState {
-    const items: ProdutoDto[] = [
-        {
-            id: 1,
-            name: "A",
-            minWeight: 100,
-            idealWeight: 400,
-            maxWeight: 500,
-            weight: 200
-        },
-        {
-            id: 2,
-            name: "B",
-            minWeight: 100,
-            idealWeight: 400,
-            maxWeight: 500,
-            weight: 200
-        },
-        {
-            id: 3,
-            name: "C",
-            minWeight: 100,
-            idealWeight: 400,
-            maxWeight: 500,
-            weight: 200
-        },
-        {
-            id: 4,
-            name: "D",
-            minWeight: 100,
-            idealWeight: 400,
-            maxWeight: 500,
-            weight: 200
-        }
-    ];
-
-    const totalCount: number = 4;
+    const items: ProdutoDto[] = [];
+    const totalCount = 0;
     const produto = null;
     const isLoadingList = false;
     const isLoadingItem = false;
@@ -54,12 +22,64 @@ export const useProdutoStore = defineStore("Produtos", {
         totalCountProdutos: (state): number => state.totalCount
     },
     actions: {
-        async fetchProdutoById(id: number) {
-            const index = this.items.findIndex(i => i.id == id);
-            if (index > -1 && this.items[index])
-                this.produto = this.items[index];
-            else
-                this.error = "Produto não encontrada.";
-        }
+        async create(dto: ProdutoDto) {
+            this.isLoadingItem = true;
+            try {
+                const response = await axios.post<ProdutoDto>("/produtos", dto);
+                this.produto = response.data;
+
+                await this.fetch();
+            }
+            catch (err) { }
+            finally {
+                this.isLoadingItem = false;
+            }
+        },
+        async update(dto: ProdutoDto) {
+            this.isLoadingItem = true;
+            try {
+                const response = await axios.put<ProdutoDto>("/produtos", dto);
+                this.produto = response.data;
+
+                await this.fetch();
+            }
+            catch (err) { }
+            finally {
+                this.isLoadingItem = false;
+            }
+        },
+        async fetchById(id: number) {
+            this.isLoadingItem = true;
+            try {
+                const response = await axios.get<ProdutoDto>('/produtos/' + id);
+                this.produto = response.data;
+            }
+            catch (err) { }
+            finally {
+                this.isLoadingItem = false;
+            }
+        },
+        async fetch() {
+            this.isLoadingList = true;
+            try {
+                const response = await axios.get<ProdutoDto[]>('/produtos');
+                this.items = response.data;
+            }
+            catch (err) { }
+            finally {
+                this.isLoadingList = false;
+            }
+        },
+        async delete(id: number) {
+            this.isLoadingItem = true;
+            try {
+                await axios.delete<ProdutoDto>('/produtos/' + id);
+                await this.fetch();
+            }
+            catch (err) { }
+            finally {
+                this.isLoadingItem = false;
+            }
+        },
     },
 });

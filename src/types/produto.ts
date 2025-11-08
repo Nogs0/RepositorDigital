@@ -11,14 +11,12 @@ export interface ProdutoState {
 }
 
 export interface ProdutoDto {
-    id: number,
-    name: string,
-    minWeight: number,
-    idealWeight: number,
-    maxWeight: number,
-    weight: number,
-    topic: string,
-    status: StatusStock
+    produto_id: number,
+    nome: string,
+    pesoMinimo: number,
+    pesoIdeal: number,
+    pesoMaximo: number,
+    topic: string
 }
 
 export type StatusStock = "otimo" | "bom" | "baixo" | "critico";

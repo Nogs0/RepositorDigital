@@ -17,6 +17,7 @@ declare module 'vue' {
     CountCard: typeof import('./components/CountCard.vue')['default']
     HeaderTable: typeof import('./components/HeaderTable.vue')['default']
     HelloWorld: typeof import('./components/HelloWorld.vue')['default']
+    NoItemsTable: typeof import('./components/NoItemsTable.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }
