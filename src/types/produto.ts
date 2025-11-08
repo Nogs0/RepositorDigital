@@ -15,13 +15,17 @@ export interface ProdutoDto {
     name: string,
     minWeight: number,
     idealWeight: number,
-    maxWeight: number ,
-    weight: number
+    maxWeight: number,
+    weight: number,
+    topic: string,
+    status: StatusStock
 }
+
+export type StatusStock = "otimo" | "bom" | "baixo" | "critico";
 
 export interface CreateProdutoDto {
     name: string,
     minWeight: number,
     idealWeight: number,
-    maxWeight: number  
+    maxWeight: number
 }
