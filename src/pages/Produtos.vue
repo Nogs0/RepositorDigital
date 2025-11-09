@@ -33,8 +33,6 @@
             :rules="[rules.required]"></v-text-field>
           <v-text-field v-model="formModel.pesoMaximo" label="Peso máximo *" placeholder="Insira o peso máximo"
             :rules="[rules.required]"></v-text-field>
-          <v-text-field v-model="formModel.topic" label="Tópico *" placeholder="Insira o tópico"
-            :rules="[rules.required, rules.minLength(4), rules.maxLength(64)]"></v-text-field>
         </v-container>
         <v-card-actions>
           <v-btn text="Cancelar" @click="createOrEditDialog = !createOrEditDialog"></v-btn>
@@ -64,7 +62,7 @@
 
 <script lang="ts" setup>
 import { useProdutoStore } from "@/stores/produtos";
-import type { ProdutoDto } from "@/types/produto";
+import type { ProdutoDto } from "@/types/produtos";
 import { rules } from "@/utils/rules";
 import type { DataTableHeader } from "vuetify";
 const produtoStore = useProdutoStore();
@@ -92,8 +90,7 @@ function createNewRecord(): ProdutoDto {
     nome: "",
     pesoMinimo: 0,
     pesoIdeal: 0,
-    pesoMaximo: 0,
-    topic: ""
+    pesoMaximo: 0
   };
 }
 

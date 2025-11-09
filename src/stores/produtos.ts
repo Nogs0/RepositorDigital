@@ -1,4 +1,4 @@
-import type { ProdutoDto, ProdutoState } from "@/types/produto";
+import type { ProdutoDto, ProdutoState } from "@/types/produtos";
 import axios from "axios";
 import { ca } from "vuetify/locale";
 

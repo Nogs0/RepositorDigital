@@ -15,8 +15,7 @@ export interface ProdutoDto {
     nome: string,
     pesoMinimo: number,
     pesoIdeal: number,
-    pesoMaximo: number,
-    topic: string
+    pesoMaximo: number
 }
 
 export type StatusStock = "otimo" | "bom" | "baixo" | "critico";

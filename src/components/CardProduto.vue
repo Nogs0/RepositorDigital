@@ -50,9 +50,10 @@ const cardClass = computed(() => {
     const g = props.produto;
 
     if (g.peso_atual < g.peso_minimo) return 'produto-critical';
+    if (g.peso_atual < g.peso_ideal) return 'produto-low';
     if (g.peso_atual < g.peso_maximo) return 'produto-healthy';
 
-    return 'produto-healthy';
+    return 'white';
 });
 
 const badgeClass = computed(() => {
