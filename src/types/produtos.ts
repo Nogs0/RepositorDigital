@@ -11,7 +11,7 @@ export interface ProdutoState {
 }
 
 export interface ProdutoDto {
-    produto_id: number,
+    // produto_id: number,
     nome: string,
     pesoMinimo: number,
     pesoIdeal: number,

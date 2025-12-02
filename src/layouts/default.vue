@@ -4,11 +4,15 @@
       <v-list>
         <v-list-item to="/dashboard">Dashboard</v-list-item>
         <v-list-item to="/produtos">Produtos</v-list-item>
+        <v-list-item to="/perfil">Perfil</v-list-item>
       </v-list>
     </v-navigation-drawer>
     <v-app-bar color="primary">
       <v-app-bar-nav-icon @click.stop="menuOpen = !menuOpen"></v-app-bar-nav-icon>
-      <v-toolbar-title>Mercadinho do seu Zé</v-toolbar-title>
+      <v-toolbar-title>Repositor digital</v-toolbar-title>
+      <v-btn icon @click="openLogoutDialog()">
+        <v-icon>mdi-logout</v-icon>
+      </v-btn>
     </v-app-bar>
 
     <v-main>
@@ -17,9 +21,31 @@
       </v-container>
     </v-main>
   </v-app>
-
+  <v-dialog v-model="logouDialog" max-width="500">
+    <v-card title="Sair">
+      <v-divider></v-divider>
+      <v-container>
+        <p>Deseja realmente sair?</p>
+      </v-container>
+      <v-card-actions class="bg-surface-light">
+        <v-btn text="Cancelar" variant="tonal" @click="closeLogoutDialog()"></v-btn>
+        <v-spacer></v-spacer>
+        <v-btn text="Sair" color="red" @click="authStore.logout()" variant="tonal"></v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
 </template>
 
 <script lang="ts" setup>
+import { useAuthStore } from '@/stores/auth';
+
 const menuOpen = ref<boolean>(true);
+const authStore = useAuthStore();
+const logouDialog = ref<boolean>(false);
+function openLogoutDialog() {
+  logouDialog.value = true;
+}
+function closeLogoutDialog() {
+  logouDialog.value = false;
+}
 </script>

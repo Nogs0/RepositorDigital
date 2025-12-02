@@ -19,7 +19,11 @@ declare module 'vue-router/auto-routes' {
    */
   export interface RouteNamedMap {
     '/Dashboard': RouteRecordInfo<'/Dashboard', '/Dashboard', Record<never, never>, Record<never, never>>,
+    '/LoginPage': RouteRecordInfo<'/LoginPage', '/LoginPage', Record<never, never>, Record<never, never>>,
+    '/NotFoundPage': RouteRecordInfo<'/NotFoundPage', '/NotFoundPage', Record<never, never>, Record<never, never>>,
+    '/PerfilPage': RouteRecordInfo<'/PerfilPage', '/PerfilPage', Record<never, never>, Record<never, never>>,
     '/Produtos': RouteRecordInfo<'/Produtos', '/Produtos', Record<never, never>, Record<never, never>>,
+    '/RegisterPage': RouteRecordInfo<'/RegisterPage', '/RegisterPage', Record<never, never>, Record<never, never>>,
   }
 
   /**
@@ -37,8 +41,24 @@ declare module 'vue-router/auto-routes' {
       routes: '/Dashboard'
       views: never
     }
+    'src/pages/LoginPage.vue': {
+      routes: '/LoginPage'
+      views: never
+    }
+    'src/pages/NotFoundPage.vue': {
+      routes: '/NotFoundPage'
+      views: never
+    }
+    'src/pages/PerfilPage.vue': {
+      routes: '/PerfilPage'
+      views: never
+    }
     'src/pages/Produtos.vue': {
       routes: '/Produtos'
+      views: never
+    }
+    'src/pages/RegisterPage.vue': {
+      routes: '/RegisterPage'
       views: never
     }
   }
